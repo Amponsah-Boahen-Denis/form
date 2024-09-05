@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h3 {
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+.form-section label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-section input, 
+.form-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-section textarea {
+    resize: vertical;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    h1, h3 {
+        font-size: 1.2em;
+    }
+
+    .form-section input, 
+    .form-section textarea {
+        font-size: 0.9em;
+    }
+}
+
+        /* body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border:1px solid black;
+            align-self: center;
+        }
+        h1{
+            color: blue;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        .form-section label {
+            font-weight: bold;
+        }
+        .form-section input, .form-section textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+       
+/* @media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .form-section input, .form-section textarea {
+        font-size: 0.9em;
+    }
+} */
+
+    </style>
+</head>
+<body>
+
+   
+<div class="container">
+    <h1>FUTURE GOAL ACADEMY</h1>
+    <h3>Admission Form</h3>
+    <form id="admissionForm">
+        
+        <div class="form-section">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+
+        <div class="form-section">
+            <label for="courseName">Course Name & Duration:</label>
+            <input type="text" id="courseName" name="courseName" required>
+        </div>
+        
+
+        <div class="form-section">
+            <label for="applicantNameBangla">Applicant Name (Bangla):</label>
+            <input type="text" id="applicantNameBangla" name="applicantNameBangla" required>
+        </div>
+
+        <!-- Add all other fields here as before -->
+
+        <div class="form-section">
+            <label for="applicantNameCapital">Applicant Name (Capital Letter):</label>
+            <input type="text" id="applicantNameCapital" name="applicantNameCapital" required>
+        </div>
+
+        
+<div class="form-section">
+    <label for="fatherName">Father’s Name:</label>
+    <input type="text" id="fatherName" name="fatherName" required>
+</div>
+
+<div class="form-section">
+    <label for="fatherNameCapital">Father’s Name (Capital Letter):</label>
+    <input type="text" id="fatherNameCapital" name="fatherNameCapital" required>
+</div>
+
+<div class="form-section">
+    <label for="motherName">Mother’s Name:</label>
+    <input type="text" id="motherName" name="motherName" required>
+</div>
+
+
+
+<div class="form-section">
+    <label for="motherNameCapital">Mother’s Name (Capital Letter):</label>
+    <input type="text" id="motherNameCapital" name="motherNameCapital" required>
+</div>
+
+<div class="form-section">
+    <label for="addressPermanent">Address (Permanent):</label>
+    <textarea id="addressPermanent" name="addressPermanent" rows="2" required></textarea>
+</div>
+
+<div class="form-section">
+    <label for="addressPresent">Address (Present):</label>
+    <textarea id="addressPresent" name="addressPresent" rows="2" required></textarea>
+</div>
+
+<div class="form-section">
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required>
+</div>
+
+<div class="form-section">
+    <label for="religion">Religion:</label>
+    <input type="text" id="religion" name="religion" required>
+</div>
+
+<div class="form-section">
+    <label for="profession">Profession:</label>
+    <input type="text" id="profession" name="profession" required>
+</div>
+
+<div class="form-section">
+    <label for="mobile">Mobile:</label>
+    <input type="tel" id="mobile" name="mobile" required>
+</div>
+
+<div class="form-section">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+</div>
+
+<div class="form-section">
+    <label for="altMobile">Alt. Mobile:</label>
+    <input type="tel" id="altMobile" name="altMobile">
+</div>
+
+<div class="form-section">
+    <label for="village">Village:</label>
+    <input type="text" id="village" name="village">
+</div>
+
+<div class="form-section">
+    <label for="po">P/O:</label>
+    <input type="text" id="po" name="po">
+</div>
+
+<div class="form-section">
+    <label for="upazilla">Upazilla:</label>
+    <input type="text" id="upazilla" name="upazilla">
+</div>
+
+<div class="form-section">
+    <label for="district">District:</label>
+    <input type="text" id="district" name="district">
+</div>
+
+<div class="form-section">
+    <label for="nationality">Nationality:</label>
+    <input type="text" id="nationality" name="nationality">
+</div>
+
+<!-- <div class="form-section">
+    <label for="photo">Photo:</label>
+    <input type="file" id="photo" name="photo" accept="image/*" required>
+</div> -->
+
+<div class="form-section">
+    <h3>Educational Qualification</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Examination</th>
+                <th>Board</th>
+                <th>Subject/Grade</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" id="examination1" name="examination1"></td>
+                <td><input type="text" id="board1" name="board1"></td>
+                <td><input type="text" id="subjectGrade1" name="subjectGrade1"></td>
+                <td><input type="text" id="year1" name="year1"></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="examination2" name="examination2"></td>
+                <td><input type="text" id="board2" name="board2"></td>
+                <td><input type="text" id="subjectGrade2" name="subjectGrade2"></td>
+                <td><input type="text" id="year2" name="year2"></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="examination3" name="examination3"></td>
+                <td><input type="text" id="board3" name="board3"></td>
+                <td><input type="text" id="subjectGrade3" name="subjectGrade3"></td>
+                <td><input type="text" id="year3" name="year3"></td>
+            </tr>
+        </tbody>
+        
+    </table>
+</div>
+
+
+
+
+<div class="form-section">
+     <b>ATTACHMENT</b> <br>
+       <b> 1.Photocopy of latest educational qualification certificate</b><br>
+       <b>2.Two copies of passport size photo</b><br>
+    <p> 
+        I hereby certify that the above information is true and correct. Based on the above information,
+        I am applying for admission to this institution. I will be obliged to follow the rules and
+        regulations of this institution.
+    </p>
+</div>
+
+<div class="form-section">
+    <label for="guardianSignature">Signature of Guardian:</label>
+    <input type="text" id="guardianSignature" name="guardianSignature" >
+</div>
+
+<div class="form-section">
+    <label for="applicantSignature">Applicant's Signature and Date:</label>
+    <input type="text" id="applicantSignature" name="applicantSignature" >
+</div>
+
+        <div class="form-section">
+            <label for="photo">Photo:</label>
+            <input type="file" id="photo" name="photo" accept="image/*" required>
+        </div>
+
+        <div class="form-section">
+            <button type="submit">Submit && Download PDF</button>
+        </div>
+
+    </form>
+</div>
+    <script>
+      
+    
+   
+      document.getElementById('admissionForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const date = document.getElementById('date').value || '';
+    const courseName = document.getElementById('courseName').value || '';
+    const applicantNameBangla = document.getElementById('applicantNameBangla').value || '';
+    const applicantNameCapital = document.getElementById('applicantNameCapital').value || '';
+    const fatherName = document.getElementById('fatherName').value || '';
+    const fatherNameCapital = document.getElementById('fatherNameCapital').value || '';
+    const motherName = document.getElementById('motherName').value || '';
+    const motherNameCapital = document.getElementById('motherNameCapital').value || '';
+    const addressPermanent = document.getElementById('addressPermanent').value || '';
+    const addressPresent = document.getElementById('addressPresent').value || '';
+    const dob = document.getElementById('dob').value || '';
+    const religion = document.getElementById('religion').value || '';
+    const profession = document.getElementById('profession').value || '';
+    const mobile = document.getElementById('mobile').value || '';
+    const email = document.getElementById('email').value || '';
+    const altMobile = document.getElementById('altMobile').value || '';
+    const village = document.getElementById('village').value || '';
+    const po = document.getElementById('po').value || '';
+    const upazilla = document.getElementById('upazilla').value || '';
+    const district = document.getElementById('district').value || '';
+    const nationality = document.getElementById('nationality').value || '';
+
+    // Newly added fields for signatures
+    const guardianSignature = document.getElementById('guardianSignature').value || '';
+    const applicantSignature = document.getElementById('applicantSignature').value || '';
+
+    const examination1 = document.getElementById('examination1').value || '';
+    const board1 = document.getElementById('board1').value || '';
+    const subjectGrade1 = document.getElementById('subjectGrade1').value || '';
+    const year1 = document.getElementById('year1').value || '';
+
+    const examination2 = document.getElementById('examination2').value || '';
+    const board2 = document.getElementById('board2').value || '';
+    const subjectGrade2 = document.getElementById('subjectGrade2').value || '';
+    const year2 = document.getElementById('year2').value || '';
+
+    const examination3 = document.getElementById('examination3').value || '';
+    const board3 = document.getElementById('board3').value || '';
+    const subjectGrade3 = document.getElementById('subjectGrade3').value || '';
+    const year3 = document.getElementById('year3').value || '';
+
+    const photoFile = document.getElementById('photo').files[0];
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Read the image file and add it to the top of the PDF
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const imgData = e.target.result;
+        doc.addImage(imgData, 'JPEG', 10, 10, 30, 30); // Reduce photo size
+        generatePDF();
+    };
+    reader.readAsDataURL(photoFile);
+
+    function generatePDF() {
+        doc.setFontSize(11); // Reduce font size
+        doc.text('FUTURE GOAL ACADEMY', 10, 50);
+        doc.setFontSize(8);
+        doc.text('Admission Form', 10, 60);
+
+        doc.setFontSize(8);
+        const lineHeight = 10; // Adjust line height
+        let y = 70;
+        doc.text(`Date: ${date}`, 10, y); y += lineHeight;
+        doc.text(`Course Name & Duration: ${courseName}`, 10, y); y += lineHeight;
+        doc.text(`Applicant Name (Bangla): ${applicantNameBangla}`, 10, y); y += lineHeight;
+        doc.text(`Applicant Name (Capital Letter): ${applicantNameCapital}`, 10, y); y += lineHeight;
+        doc.text(`Father’s Name: ${fatherName}`, 10, y); y += lineHeight;
+        doc.text(`Father’s Name (Capital Letter): ${fatherNameCapital}`, 10, y); y += lineHeight;
+        doc.text(`Mother’s Name: ${motherName}`, 10, y); y += lineHeight;
+        doc.text(`Mother’s Name (Capital Letter): ${motherNameCapital}`, 10, y); y += lineHeight;
+        doc.text(`Address (Permanent): ${addressPermanent}`, 10, y); y += lineHeight;
+        doc.text(`Address (Present): ${addressPresent}`, 10, y); y += lineHeight;
+        doc.text(`Date of Birth: ${dob}`, 10, y); y += lineHeight;
+        doc.text(`Religion: ${religion}`, 10, y); y += lineHeight;
+        doc.text(`Profession: ${profession}`, 10, y); y += lineHeight;
+        doc.text(`Mobile: ${mobile}`, 10, y); y += lineHeight;
+        doc.text(`Email: ${email}`, 10, y); y += lineHeight;
+        doc.text(`Alt. Mobile: ${altMobile}`, 10, y); y += lineHeight;
+        doc.text(`Village: ${village}`, 10, y); y += lineHeight;
+        doc.text(`P/O: ${po}`, 10, y); y += lineHeight;
+        doc.text(`Upazilla: ${upazilla}`, 10, y); y += lineHeight;
+        doc.text(`District: ${district}`, 10, y); y += lineHeight;
+        doc.text(`Nationality: ${nationality}`, 10, y); y += lineHeight;
+
+        // Signatures
+        doc.text(`Guardian Signature: ${guardianSignature}`, 10, y); y += lineHeight;
+        doc.text(`Applicant Signature: ${applicantSignature}`, 10, y); y += lineHeight;
+
+        // Add Educational Qualification Table
+        doc.text('Educational Qualification:', 10, y);
+        y += lineHeight;
+        doc.autoTable({
+            startY: y,
+            margin: { left: 10, right: 10 },
+            head: [['Examination', 'Board', 'Subject/Grade', 'Year']],
+            body: [
+                [examination1, board1, subjectGrade1, year1],
+                [examination2, board2, subjectGrade2, year2],
+                [examination3, board3, subjectGrade3, year3],
+            ]
+        });
+
+        doc.save('admission_form.pdf');
+    }
+});
+
+
+    </script>
+
+</body>
+</html>
